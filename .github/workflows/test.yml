@@ -25,3 +25,4 @@ jobs:
           (echo "2: sleeping 5"; sleep 5; echo "2: done sleeping 5")
           cat sleep10.txt
           fg
+          wait
