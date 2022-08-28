@@ -21,8 +21,6 @@ jobs:
       - name: Test concurrent jobs
         run: |
           set -m
-          (echo "1: sleeping 10"; sleep 10; echo "1: done sleeping 10") >sleep10.txt &
-          (echo "2: sleeping 5"; sleep 5; echo "2: done sleeping 5")
-          cat sleep10.txt
-          fg
+          (echo "1: sleeping 8"; sleep 8; echo "1: done sleeping 8") &
+          echo "2: sleeping 4"; sleep 4; echo "2: done sleeping 4"
           wait
