@@ -8,5 +8,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: git fetch --update-shallow origin main
+      - run: git fetch origin main
       - run: git push origin HEAD:main
