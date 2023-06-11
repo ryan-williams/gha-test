@@ -1,29 +1,15 @@
-name: Build, push rightsize images
+name: Test fetch/pull/push
 on:
   push:
     branches:
-      - "**"
-  pull_request:
-    branches:
-      - "**"
+      - test
 jobs:
-  build_rightsize_image:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - name: Env check
-        run: |
-          echo "GITHUB_HEAD_REF: ${GITHUB_HEAD_REF}, GITHUB_BASE_REF: ${GITHUB_BASE_REF}, GITHUB_REF_NAME: ${GITHUB_REF_NAME}"
-          env
-      - name: cat release
-        run: |
-          cat /etc/*-release
-      - name: Clone repo (sans submodules)
-        uses: actions/checkout@v2
-        with:
-          ref: ${{ env.GIT_BRANCH }}
-      - name: Test concurrent jobs
-        run: |
-          set -m
-          (echo "1: sleeping 8"; sleep 8; echo "1: done sleeping 8") &
-          echo "2: sleeping 4"; sleep 4; echo "2: done sleeping 4"
-          wait
+      - uses: actions/checkout@v2
+      - run: |
+          git config pull.rebase false
+          git fetch origin main
+          git pull origin main
+          git push origin main
