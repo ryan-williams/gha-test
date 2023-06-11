@@ -9,6 +9,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: git config pull.rebase false
-      - run: git fetch --update-shallow origin main
+      - run: git fetch --shallow-exclude=main origin
       - run: git pull origin main
       - run: git push origin main
