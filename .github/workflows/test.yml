@@ -2,11 +2,11 @@ name: Test fetch/pull/push
 on:
   push:
     branches:
-      - test
+      - test0
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: git fetch --unshallow origin main
+      - run: git fetch origin main
       - run: git push origin HEAD:main
