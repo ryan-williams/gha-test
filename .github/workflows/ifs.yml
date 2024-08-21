@@ -3,12 +3,12 @@ name: 'Test GHA "if" expressions (actions/runner#1173)'
 on:
   workflow_dispatch:
     inputs:
-      empty_string:
+      empty:
         description: 'Empty string'
         default: ''
-      arg:
+      nonempty:
         description: 'Argument'
-        default: 'arg'
+        default: 'nonempty'
 env:
   L: ${{ '${{' }}
   R: '}}'
@@ -18,38 +18,38 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      # Empty string comparisons, expressions inlined
-      - name: 'inputs.empty_string'
-        if: inputs.empty_string
+      # Empty string comparisons
+      - name: 'inputs.empty'
+        if: inputs.empty
         run: echo
-      - name: '${{ env.L }} inputs.empty_string ${{ env.R }}'
-        if: ${{ inputs.empty_string }}
-        run: echo
-
-      - name: 'inputs.empty_string != '''''
-        if: inputs.empty_string != ''
-        run: echo
-      - name: '${{ env.L }} inputs.empty_string != '''' ${{ env.R }}'
-        if: ${{ inputs.empty_string != '' }}
+      - name: '${{ env.L }} inputs.empty ${{ env.R }}'
+        if: ${{ inputs.empty }}
         run: echo
 
-      - name: 'inputs.empty_string == ''arg'''
-        if: inputs.empty_string == 'arg'
+      - name: 'inputs.empty != '''''
+        if: inputs.empty != ''
         run: echo
-      - name: '${{ env.L }} inputs.empty_string == ''arg'' ${{ env.R }}'
-        if: ${{ inputs.empty_string == 'arg' }}
-        run: echo
-
-      - name: 'inputs.empty_string == '''''
-        if: inputs.empty_string == ''
-        run: echo
-      - name: '${{ env.L }} inputs.empty_string == '''' ${{ env.R }}'
-        if: ${{ inputs.empty_string == '' }}
+      - name: '${{ env.L }} inputs.empty != '''' ${{ env.R }}'
+        if: ${{ inputs.empty != '' }}
         run: echo
 
-      - name: 'inputs.empty_string != ''arg'''
-        if: inputs.empty_string != 'arg'
+      - name: 'inputs.empty == ''nonempty'''
+        if: inputs.empty == 'nonempty'
         run: echo
-      - name: '${{ env.L }} inputs.empty_string != ''arg'' ${{ env.R }}'
-        if: ${{ inputs.empty_string != 'arg' }}
+      - name: '${{ env.L }} inputs.empty == ''nonempty'' ${{ env.R }}'
+        if: ${{ inputs.empty == 'nonempty' }}
+        run: echo
+
+      - name: 'inputs.empty == '''''
+        if: inputs.empty == ''
+        run: echo
+      - name: '${{ env.L }} inputs.empty == '''' ${{ env.R }}'
+        if: ${{ inputs.empty == '' }}
+        run: echo
+
+      - name: 'inputs.empty != ''nonempty'''
+        if: inputs.empty != 'nonempty'
+        run: echo
+      - name: '${{ env.L }} inputs.empty != ''nonempty'' ${{ env.R }}'
+        if: ${{ inputs.empty != 'nonempty' }}
         run: echo
