@@ -19,73 +19,73 @@ jobs:
     steps:
 
       # Empty string comparisons
-      - name: 'inputs.empty'
+      - name: 'if: inputs.empty'
         if: inputs.empty
         run: echo
-      - name: '${{ env.L }} inputs.empty ${{ env.R }}'
+      - name: 'if: ${{ env.L }} inputs.empty ${{ env.R }}'
         if: ${{ inputs.empty }}
         run: echo
 
-      - name: 'inputs.empty != '''''
+      - name: 'if: inputs.empty != '''''
         if: inputs.empty != ''
         run: echo
-      - name: '${{ env.L }} inputs.empty != '''' ${{ env.R }}'
+      - name: 'if: ${{ env.L }} inputs.empty != '''' ${{ env.R }}'
         if: ${{ inputs.empty != '' }}
         run: echo
 
-      - name: 'inputs.empty == ''nonempty'''
+      - name: 'if: inputs.empty == ''nonempty'''
         if: inputs.empty == 'nonempty'
         run: echo
-      - name: '${{ env.L }} inputs.empty == ''nonempty'' ${{ env.R }}'
+      - name: 'if: ${{ env.L }} inputs.empty == ''nonempty'' ${{ env.R }}'
         if: ${{ inputs.empty == 'nonempty' }}
         run: echo
 
-      - name: 'inputs.empty == '''''
+      - name: 'if: inputs.empty == '''''
         if: inputs.empty == ''
         run: echo
-      - name: '${{ env.L }} inputs.empty == '''' ${{ env.R }}'
+      - name: 'if: ${{ env.L }} inputs.empty == '''' ${{ env.R }}'
         if: ${{ inputs.empty == '' }}
         run: echo
 
-      - name: 'inputs.empty != ''nonempty'''
+      - name: 'if: inputs.empty != ''nonempty'''
         if: inputs.empty != 'nonempty'
         run: echo
-      - name: '${{ env.L }} inputs.empty != ''nonempty'' ${{ env.R }}'
+      - name: 'if: ${{ env.L }} inputs.empty != ''nonempty'' ${{ env.R }}'
         if: ${{ inputs.empty != 'nonempty' }}
         run: echo
 
       # Non-empty string comparisons
-      - name: 'inputs.nonempty'
+      - name: 'if: inputs.nonempty'
         if: inputs.nonempty
         run: echo
-      - name: '${{ env.L }} inputs.nonempty ${{ env.R }}'
+      - name: 'if: ${{ env.L }} inputs.nonempty ${{ env.R }}'
         if: ${{ inputs.nonempty }}
         run: echo
 
-      - name: 'inputs.nonempty != '''''
+      - name: 'if: inputs.nonempty != '''''
         if: inputs.nonempty != ''
         run: echo
-      - name: '${{ env.L }} inputs.nonempty != '''' ${{ env.R }}'
+      - name: 'if: ${{ env.L }} inputs.nonempty != '''' ${{ env.R }}'
         if: ${{ inputs.nonempty != '' }}
         run: echo
 
-      - name: 'inputs.nonempty == ''nonempty'''
+      - name: 'if: inputs.nonempty == ''nonempty'''
         if: inputs.nonempty == 'nonempty'
         run: echo
-      - name: '${{ env.L }} inputs.nonempty == ''nonempty'' ${{ env.R }}'
+      - name: 'if: ${{ env.L }} inputs.nonempty == ''nonempty'' ${{ env.R }}'
         if: ${{ inputs.nonempty == 'nonempty' }}
         run: echo
 
-      - name: 'inputs.nonempty == '''''
+      - name: 'if: inputs.nonempty == '''''
         if: inputs.nonempty == ''
         run: echo
-      - name: '${{ env.L }} inputs.nonempty == '''' ${{ env.R }}'
+      - name: 'if: ${{ env.L }} inputs.nonempty == '''' ${{ env.R }}'
         if: ${{ inputs.nonempty == '' }}
         run: echo
 
-      - name: 'inputs.nonempty != ''nonempty'''
+      - name: 'if: inputs.nonempty != ''nonempty'''
         if: inputs.nonempty != 'nonempty'
         run: echo
-      - name: '${{ env.L }} inputs.nonempty != ''nonempty'' ${{ env.R }}'
+      - name: 'if: ${{ env.L }} inputs.nonempty != ''nonempty'' ${{ env.R }}'
         if: ${{ inputs.nonempty != 'nonempty' }}
         run: echo
