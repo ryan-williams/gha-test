@@ -7,18 +7,17 @@ on:
         description: 'Empty string'
         default: ''
       nonempty:
-        description: 'Argument'
+        description: 'Non-empty string'
         default: 'nonempty'
 env:
+  # Escaped for use in step names; h/t https://github.com/orgs/community/discussions/26621#discussioncomment-3252557
   L: ${{ '${{' }}
   R: '}}'
 jobs:
-  test:
-    name: 'Test GHA "if" expressions (actions/runner#1173)'
+  test-empty:
+    name: 'Empty-string "if"s'
     runs-on: ubuntu-latest
     steps:
-
-      # Empty string comparisons
       - name: 'if: inputs.empty'
         if: inputs.empty
         run: echo
@@ -54,7 +53,10 @@ jobs:
         if: ${{ inputs.empty != 'nonempty' }}
         run: echo
 
-      # Non-empty string comparisons
+  test-nonempty:
+    name: 'Non-empty-string "if"s'
+    runs-on: ubuntu-latest
+    steps:
       - name: 'if: inputs.nonempty'
         if: inputs.nonempty
         run: echo
