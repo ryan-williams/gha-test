@@ -22,31 +22,33 @@ jobs:
       - name: 'inputs.empty_string'
         if: inputs.empty_string
         run: echo
-      - name: 'inputs.empty_string == '''''
-        if: inputs.empty_string == ''
-        run: echo
-      - name: 'inputs.empty_string != '''''
-        if: inputs.empty_string != ''
-        run: echo
-      - name: 'inputs.empty_string == ''arg'''
-        if: inputs.empty_string == 'arg'
-        run: echo
-      - name: 'inputs.empty_string != ''arg'''
-        if: inputs.empty_string != 'arg'
-        run: echo
-
-      # Empty string comparisons, wrapped in ${{ … }}
       - name: '${{ env.L }} inputs.empty_string ${{ env.R }}'
         if: ${{ inputs.empty_string }}
         run: echo
-      - name: '${{ env.L }} inputs.empty_string == '''' ${{ env.R }}'
-        if: ${{ inputs.empty_string == '' }}
+
+      - name: 'inputs.empty_string != '''''
+        if: inputs.empty_string != ''
         run: echo
       - name: '${{ env.L }} inputs.empty_string != '''' ${{ env.R }}'
         if: ${{ inputs.empty_string != '' }}
         run: echo
+
+      - name: 'inputs.empty_string == ''arg'''
+        if: inputs.empty_string == 'arg'
+        run: echo
       - name: '${{ env.L }} inputs.empty_string == ''arg'' ${{ env.R }}'
         if: ${{ inputs.empty_string == 'arg' }}
+        run: echo
+
+      - name: 'inputs.empty_string == '''''
+        if: inputs.empty_string == ''
+        run: echo
+      - name: '${{ env.L }} inputs.empty_string == '''' ${{ env.R }}'
+        if: ${{ inputs.empty_string == '' }}
+        run: echo
+
+      - name: 'inputs.empty_string != ''arg'''
+        if: inputs.empty_string != 'arg'
         run: echo
       - name: '${{ env.L }} inputs.empty_string != ''arg'' ${{ env.R }}'
         if: ${{ inputs.empty_string != 'arg' }}
