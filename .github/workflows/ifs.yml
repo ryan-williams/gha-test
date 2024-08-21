@@ -1,0 +1,58 @@
+# See https://github.com/actions/runner/issues/1173
+name: 'Test GHA "if" expressions (actions/runner#1173)'
+on:
+  workflow_dispatch:
+    inputs:
+      empty_string:
+        description: 'Empty string'
+        default: ''
+      arg:
+        description: 'Argument'
+        default: 'arg'
+jobs:
+  test:
+    name: Test ${{ inputs.runs-on || 'ubuntu-latest' }}
+    runs-on: ubuntu-latest
+    steps:
+
+      - if: inputs.empty_string
+        run: echo
+      - if: inputs.empty_string == ''
+        run: echo
+      - if: inputs.empty_string != ''
+        run: echo
+      - if: inputs.empty_string == 'arg'
+        run: echo
+      - if: inputs.empty_string != 'arg'
+        run: echo
+      - if: ${{ inputs.empty_string }}
+        run: echo
+      - if: ${{ inputs.empty_string == '' }}
+        run: echo
+      - if: ${{ inputs.empty_string != '' }}
+        run: echo
+      - if: ${{ inputs.empty_string == 'arg' }}
+        run: echo
+      - if: ${{ inputs.empty_string != 'arg' }}
+        run: echo
+
+      - if: inputs.arg
+        run: echo
+      - if: inputs.arg == ''
+        run: echo
+      - if: inputs.arg != ''
+        run: echo
+      - if: inputs.arg == 'arg'
+        run: echo
+      - if: inputs.arg != 'arg'
+        run: echo
+      - if: ${{ inputs.arg }}
+        run: echo
+      - if: ${{ inputs.arg == '' }}
+        run: echo
+      - if: ${{ inputs.arg != '' }}
+        run: echo
+      - if: ${{ inputs.arg == 'arg' }}
+        run: echo
+      - if: ${{ inputs.arg != 'arg' }}
+        run: echo
