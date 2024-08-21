@@ -53,3 +53,39 @@ jobs:
       - name: '${{ env.L }} inputs.empty != ''nonempty'' ${{ env.R }}'
         if: ${{ inputs.empty != 'nonempty' }}
         run: echo
+
+      # Non-empty string comparisons
+      - name: 'inputs.nonempty'
+        if: inputs.nonempty
+        run: echo
+      - name: '${{ env.L }} inputs.nonempty ${{ env.R }}'
+        if: ${{ inputs.nonempty }}
+        run: echo
+
+      - name: 'inputs.nonempty != '''''
+        if: inputs.nonempty != ''
+        run: echo
+      - name: '${{ env.L }} inputs.nonempty != '''' ${{ env.R }}'
+        if: ${{ inputs.nonempty != '' }}
+        run: echo
+
+      - name: 'inputs.nonempty == ''nonempty'''
+        if: inputs.nonempty == 'nonempty'
+        run: echo
+      - name: '${{ env.L }} inputs.nonempty == ''nonempty'' ${{ env.R }}'
+        if: ${{ inputs.nonempty == 'nonempty' }}
+        run: echo
+
+      - name: 'inputs.nonempty == '''''
+        if: inputs.nonempty == ''
+        run: echo
+      - name: '${{ env.L }} inputs.nonempty == '''' ${{ env.R }}'
+        if: ${{ inputs.nonempty == '' }}
+        run: echo
+
+      - name: 'inputs.nonempty != ''nonempty'''
+        if: inputs.nonempty != 'nonempty'
+        run: echo
+      - name: '${{ env.L }} inputs.nonempty != ''nonempty'' ${{ env.R }}'
+        if: ${{ inputs.nonempty != 'nonempty' }}
+        run: echo
