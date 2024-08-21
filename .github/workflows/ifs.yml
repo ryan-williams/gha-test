@@ -15,7 +15,7 @@ env:
   R: '}}'
 jobs:
   test-empty:
-    name: 'Empty-string "if"s'
+    name: 'Empty-string "if"s: ✅'
     runs-on: ubuntu-latest
     steps:
       - name: 'if: inputs.empty'
@@ -54,7 +54,7 @@ jobs:
         run: echo
 
   test-nonempty:
-    name: 'Non-empty-string "if"s'
+    name: 'Non-empty-string "if"s: ✅'
     runs-on: ubuntu-latest
     steps:
       - name: 'if: inputs.nonempty'
@@ -90,4 +90,36 @@ jobs:
         run: echo
       - name: 'if: ${{ env.L }} inputs.nonempty != ''nonempty'' ${{ env.R }}'
         if: ${{ inputs.nonempty != 'nonempty' }}
+        run: echo
+
+  test-empty-mixed:
+    name: 'Mixed-expr-syntax "if"s: ❌'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'if: ${{ env.L }} inputs.empty ${{ env.R }} == '''''
+        if: ${{ inputs.empty }} == ''
+        run: echo
+      - name: 'if: ${{ env.L }} inputs.empty ${{ env.R }} != '''''
+        if: ${{ inputs.empty }} != ''
+        run: echo
+
+      - name: 'if: ${{ env.L }} inputs.empty ${{ env.R }} == ''nonempty'''
+        if: ${{ inputs.empty }} == 'nonempty'
+        run: echo
+      - name: 'if: ${{ env.L }} inputs.empty ${{ env.R }} != ''nonempty'''
+        if: ${{ inputs.empty }} != 'nonempty'
+        run: echo
+
+      - name: 'if: ${{ env.L }} inputs.nonempty ${{ env.R }} == '''''
+        if: ${{ inputs.nonempty }} == ''
+        run: echo
+      - name: 'if: ${{ env.L }} inputs.nonempty ${{ env.R }} != '''''
+        if: ${{ inputs.nonempty }} != ''
+        run: echo
+
+      - name: 'if: ${{ env.L }} inputs.nonempty ${{ env.R }} == ''nonempty'''
+        if: ${{ inputs.nonempty }} == 'nonempty'
+        run: echo
+      - name: 'if: ${{ env.L }} inputs.nonempty ${{ env.R }} != ''nonempty'''
+        if: ${{ inputs.nonempty }} != 'nonempty'
         run: echo
