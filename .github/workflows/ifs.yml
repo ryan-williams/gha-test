@@ -15,44 +15,36 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - if: inputs.empty_string
+      # Empty string comparisons, expressions inlined
+      - name: 'inputs.empty_string'
+        if: inputs.empty_string
         run: echo
-      - if: inputs.empty_string == ''
+      - name: 'inputs.empty_string == '''''
+        if: inputs.empty_string == ''
         run: echo
-      - if: inputs.empty_string != ''
+      - name: 'inputs.empty_string != '''''
+        if: inputs.empty_string != ''
         run: echo
-      - if: inputs.empty_string == 'arg'
+      - name: 'inputs.empty_string == ''arg'''
+        if: inputs.empty_string == 'arg'
         run: echo
-      - if: inputs.empty_string != 'arg'
-        run: echo
-      - if: ${{ inputs.empty_string }}
-        run: echo
-      - if: ${{ inputs.empty_string == '' }}
-        run: echo
-      - if: ${{ inputs.empty_string != '' }}
-        run: echo
-      - if: ${{ inputs.empty_string == 'arg' }}
-        run: echo
-      - if: ${{ inputs.empty_string != 'arg' }}
+      - name: 'inputs.empty_string != ''arg'''
+        if: inputs.empty_string != 'arg'
         run: echo
 
-      - if: inputs.arg
+      # Empty string comparisons, wrapped in ${{ … }}
+      - name: '${{ inputs.empty_string }}'
+        if: ${{ inputs.empty_string }}
         run: echo
-      - if: inputs.arg == ''
+      - name: '${{ inputs.empty_string == '''' }}'
+        if: ${{ inputs.empty_string == '' }}
         run: echo
-      - if: inputs.arg != ''
+      - name: '${{ inputs.empty_string != '''' }}'
+        if: ${{ inputs.empty_string != '' }}
         run: echo
-      - if: inputs.arg == 'arg'
+      - name: '${{ inputs.empty_string == ''arg'' }}'
+        if: ${{ inputs.empty_string == 'arg' }}
         run: echo
-      - if: inputs.arg != 'arg'
-        run: echo
-      - if: ${{ inputs.arg }}
-        run: echo
-      - if: ${{ inputs.arg == '' }}
-        run: echo
-      - if: ${{ inputs.arg != '' }}
-        run: echo
-      - if: ${{ inputs.arg == 'arg' }}
-        run: echo
-      - if: ${{ inputs.arg != 'arg' }}
+      - name: '${{ inputs.empty_string != ''arg'' }}'
+        if: ${{ inputs.empty_string != 'arg' }}
         run: echo
