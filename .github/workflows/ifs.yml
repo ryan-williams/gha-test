@@ -9,6 +9,9 @@ on:
       arg:
         description: 'Argument'
         default: 'arg'
+env:
+  L: ${{ '${{' }}
+  R: '}}'
 jobs:
   test:
     name: 'Test GHA "if" expressions (actions/runner#1173)'
@@ -33,18 +36,18 @@ jobs:
         run: echo
 
       # Empty string comparisons, wrapped in ${{ … }}
-      - name: "${{ inputs.empty_string }}"
+      - name: '${{ env.L }} inputs.empty_string ${{ env.R }}'
         if: ${{ inputs.empty_string }}
         run: echo
-      - name: "${{ inputs.empty_string == '' }}"
+      - name: '${{ env.L }} inputs.empty_string == '''' ${{ env.R }}'
         if: ${{ inputs.empty_string == '' }}
         run: echo
-      - name: "${{ inputs.empty_string != '' }}"
+      - name: '${{ env.L }} inputs.empty_string != '''' ${{ env.R }}'
         if: ${{ inputs.empty_string != '' }}
         run: echo
-      - name: "${{ inputs.empty_string == 'arg' }}"
+      - name: '${{ env.L }} inputs.empty_string == ''arg'' ${{ env.R }}'
         if: ${{ inputs.empty_string == 'arg' }}
         run: echo
-      - name: "${{ inputs.empty_string != 'arg' }}"
+      - name: '${{ env.L }} inputs.empty_string != ''arg'' ${{ env.R }}'
         if: ${{ inputs.empty_string != 'arg' }}
         run: echo
