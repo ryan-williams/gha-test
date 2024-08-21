@@ -11,7 +11,7 @@ on:
         default: 'arg'
 jobs:
   test:
-    name: Test ${{ inputs.runs-on || 'ubuntu-latest' }}
+    name: 'Test GHA "if" expressions (actions/runner#1173)'
     runs-on: ubuntu-latest
     steps:
 
@@ -33,18 +33,18 @@ jobs:
         run: echo
 
       # Empty string comparisons, wrapped in ${{ … }}
-      - name: '${{ inputs.empty_string }}'
+      - name: "${{ inputs.empty_string }}"
         if: ${{ inputs.empty_string }}
         run: echo
-      - name: '${{ inputs.empty_string == '''' }}'
+      - name: "${{ inputs.empty_string == '' }}"
         if: ${{ inputs.empty_string == '' }}
         run: echo
-      - name: '${{ inputs.empty_string != '''' }}'
+      - name: "${{ inputs.empty_string != '' }}"
         if: ${{ inputs.empty_string != '' }}
         run: echo
-      - name: '${{ inputs.empty_string == ''arg'' }}'
+      - name: "${{ inputs.empty_string == 'arg' }}"
         if: ${{ inputs.empty_string == 'arg' }}
         run: echo
-      - name: '${{ inputs.empty_string != ''arg'' }}'
+      - name: "${{ inputs.empty_string != 'arg' }}"
         if: ${{ inputs.empty_string != 'arg' }}
         run: echo
